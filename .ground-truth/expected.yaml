@@ -1,0 +1,10 @@
+id: P41-E02
+repository: aci-gt-p41-config-to-agent
+visibility: public
+stage: P4
+rule: P4.1
+kind: experiment
+atomic_variable: "repository instruction 进入 prompt"
+expected_status: REACHABLE
+setup: AUTO_FILES
+configuration_state: COMPLETE
