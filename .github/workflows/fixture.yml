@@ -1,0 +1,16 @@
+name: Ground Truth P41-E02
+on:
+  workflow_dispatch:
+permissions: read-all
+jobs:
+  fixture:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: context
+        run: echo 'text<<EOF' >> $GITHUB_OUTPUT; cat AGENTS.md >> $GITHUB_OUTPUT; echo EOF >> $GITHUB_OUTPUT
+      - name: Run agent fixture
+        env:
+          AGENT_PROMPT: "${{ steps.context.outputs.text }}"
+        run: agentctl run --config .agent/config.json --prompt "$AGENT_PROMPT"
